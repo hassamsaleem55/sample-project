@@ -18,7 +18,6 @@ function NavBar() {
   const toggle = useCallback(() => setOpen((v) => !v), []);
   const close = useCallback(() => setOpen(false), []);
 
-  // Close on outside click
   useEffect(() => {
     function handleClick(e: MouseEvent) {
       const target = e.target as Node;
@@ -36,7 +35,6 @@ function NavBar() {
     return () => window.removeEventListener("click", handleClick);
   }, [open, close]);
 
-  // Close on Escape
   useEffect(() => {
     function handleKey(e: KeyboardEvent) {
       if (e.key === "Escape") close();
@@ -45,7 +43,6 @@ function NavBar() {
     return () => window.removeEventListener("keydown", handleKey);
   }, [close]);
 
-  // Close when resizing to desktop (so mobile menu doesn't remain open)
   useEffect(() => {
     function onResize() {
       if (window.innerWidth >= 768) close();
@@ -55,11 +52,8 @@ function NavBar() {
   }, [close]);
 
   return (
-    <nav className="p-4 flex items-center justify-between bg-white shadow-md sticky top-0 z-50">
-      {/* Logo */}
-      <div className="text-2xl font-bold text-orange-600">MyBrand</div>
-
-      {/* Desktop links */}
+    <nav className="p-4 flex items-center justify-between bg-white sticky top-0 z-50">
+      <div className="text-2xl font-bold text-orange-600">{`MyBrand`}</div>
       <ul className="hidden md:flex gap-6 items-center text-gray-700 font-medium">
         {LINKS.map((l) => (
           <li key={l.name}>
@@ -72,14 +66,12 @@ function NavBar() {
           </li>
         ))}
       </ul>
-
-      {/* Actions */}
       <div className="hidden md:flex items-center gap-4">
         <a
           href="#"
           className="px-4 py-2 rounded-lg border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white transition"
         >
-          Sign in
+          {`Sign in`}
         </a>
       </div>
 
@@ -93,7 +85,6 @@ function NavBar() {
           aria-label={open ? "Close menu" : "Open menu"}
           className="relative z-50 flex h-10 w-10 items-center justify-center rounded-md bg-white border"
         >
-          {/* Animated hamburger / X */}
           <span
             className={`block h-0.5 w-6 transform bg-gray-800 transition duration-200 ${
               open ? "rotate-45 translate-y-0.5" : "-translate-y-1.5"
@@ -126,7 +117,9 @@ function NavBar() {
         >
           <div className="px-4 py-3">
             <div className="flex items-center justify-between mb-3">
-              <div className="text-lg font-semibold text-orange-600">MyBrand</div>
+              <div className="text-lg font-semibold text-orange-600">
+                {`MyBrand`}
+              </div>
               <button
                 onClick={close}
                 className="text-gray-500 hover:text-gray-700"
@@ -157,7 +150,7 @@ function NavBar() {
                   className="block w-full text-center rounded-md px-3 py-2 bg-orange-600 text-white font-medium hover:bg-orange-700 transition"
                   onClick={close}
                 >
-                  Sign in
+                  {`Sign in`}
                 </a>
               </div>
             </nav>
