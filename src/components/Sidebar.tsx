@@ -1,4 +1,6 @@
-function Sidebar() {
+import LowerSidebar from "./LowerSidebar";
+
+function Sidebar({ amount }: { amount: number }) {
   return (
     <div className="space-y-4">
       <div className="space-y-6 bg-white w-full p-6 rounded-3xl">
@@ -11,7 +13,7 @@ function Sidebar() {
 
         <div className="space-y-2">
           <div className="text-3xl font-bold text-gray-800">
-            {`AED 145,999 `}
+            {`AED ${amount.toLocaleString("en-US")} `}
             <span className="text-gray-500 text-sm">{`(Inclusive of VAT)`}</span>
           </div>
 
@@ -56,15 +58,7 @@ function Sidebar() {
           </div>
         </div>
       </div>
-      <div className="grid md:grid-cols-12 bg-white w-full p-6 rounded-3xl">
-        <div className="md:col-span-3 w-full">
-          <p className="text-5xl font-bold text-orange-600">{`0%`}</p>
-        </div>
-        <div className="md:col-span-9">
-          <p className="text-orange-600">{`Downpayment for all cars`}</p>
-          <p className="font-bold">{`1 Year free warranty`}</p>
-        </div>
-      </div>
+      <LowerSidebar  />
     </div>
   );
 }

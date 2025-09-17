@@ -1,0 +1,59 @@
+/* range-slider.css */
+
+.custom-range {
+  --thumb-size: 12px;
+  --thumb-color: #f97316;
+  --track-height: 3px;
+  --track-bg: #cbd5e1; /* Tailwind gray-300 */
+  --value-percent: 50%; /* default (fallback) */
+  appearance: none;
+  width: 100%;
+  background: transparent; /* hide default track */
+}
+
+/* WebKit (Chrome, Safari, Edge) */
+.custom-range::-webkit-slider-runnable-track {
+  height: var(--track-height);
+  border-radius: 9999px;
+  background: linear-gradient(
+    to right,
+    var(--thumb-color) 0%,
+    var(--thumb-color) var(--value-percent),
+    var(--track-bg) var(--value-percent),
+    var(--track-bg) 100%
+  );
+}
+.custom-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: var(--thumb-size);
+  height: var(--thumb-size);
+  border-radius: 9999px;
+  background: white;
+  border: 4px solid var(--thumb-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  margin-top: -4px; /* center thumb */
+  cursor: pointer;
+}
+
+/* Firefox */
+.custom-range::-moz-range-track {
+  height: var(--track-height);
+  border-radius: 9999px;
+  background: linear-gradient(
+    to right,
+    var(--thumb-color) 0%,
+    var(--thumb-color) var(--value-percent),
+    var(--track-bg) var(--value-percent),
+    var(--track-bg) 100%
+  );
+}
+.custom-range::-moz-range-thumb {
+  width: var(--thumb-size);
+  height: var(--thumb-size);
+  border-radius: 9999px;
+  background: white;
+  border: 4px solid var(--thumb-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
